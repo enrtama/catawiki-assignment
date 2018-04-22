@@ -1,6 +1,9 @@
 
 /**
- *
+ * @file API module
+ * @author Enrique Tamames Sobrino
+ * @module api/
+ * @version 0.0.1
  */
 
 import axios from 'axios'

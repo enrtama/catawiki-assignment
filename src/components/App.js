@@ -1,20 +1,31 @@
 
+
 /**
- *
+ * @file Main component
+ * @author Enrique Tamames Sobrino
+ * @module components/App
+ * @version 0.0.1
  */
 
 import React, { Component } from 'react'
 import NotificationSystem from 'react-notification-system'
-import { Offline, Online } from 'react-detect-offline';
-import { STOCKS_JSON_PATH, TIMEOUT, NOTIFICATION_LEVEL } from '../constants'
+import Spinner from 'react-spinkit'
+import { Offline } from 'react-detect-offline';
+import { STOCKS_JSON_PATH, TIMEOUT, SIMULATED_DELAY, NOTIFICATION_LEVEL } from '../constants'
 import { request } from '../api'
 
-import logo from '../assets/logo.svg';
+import logo from '../assets/catawiki-logo.png';
 import '../styles/App.css';
+
+//
+// Use to simulate that the call to the endpoint takes "ms" to respond
+// In this case, we show an loader indicator
+//
+const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
 
 class App extends Component {
 
-  state = { stocks: [], headers: []}
+  state = { stocks: [], headers: [], isLoading: false}
   _notificationSystem: null
 
   /**
@@ -52,12 +63,15 @@ class App extends Component {
    * @return {type}  description
    */
   async fetchData() {
+    this.setState({isLoading: true})
+    await delay(SIMULATED_DELAY);
     const response = await request(STOCKS_JSON_PATH)
     if (response.message) {
       this.addNotification(response)
     } else {
       this.setState({stocks: response, headers: Object.keys(response[0])})
     }
+    this.setState({isLoading: false})
   }
 
   /**
@@ -77,7 +91,6 @@ class App extends Component {
    * @return {type}       description
    */
   addNotification(response) {
-    console.log(response);
     this._notificationSystem.addNotification({
       message: response.message,
       level: NOTIFICATION_LEVEL.WARNING,
@@ -92,13 +105,12 @@ class App extends Component {
    * @return {type}  description
    */
   render() {
-    const { stocks, headers } = this.state
+    const { stocks, headers, isLoading } = this.state
     return (
       <div className="App">
+        <Offline><div className="offline">Not connected</div></Offline>
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <Online><div className="online" /></Online>
-          <Offline><div className="offline" /></Offline>
           <h1 className="App-title">Welcome to Catawiki assignment</h1>
         </header>
         <div className="App-intro">
@@ -120,6 +132,7 @@ class App extends Component {
           </tbody>
         </table>
         </div>
+        {isLoading && <Spinner name='circle' />}
         <NotificationSystem ref="notificationSystem" />
       </div>
     );

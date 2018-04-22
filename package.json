@@ -8,7 +8,8 @@
     "react-detect-offline": "^2.0.1",
     "react-dom": "^16.3.1",
     "react-notification-system": "^0.2.17",
-    "react-scripts": "1.1.4"
+    "react-scripts": "1.1.4",
+    "react-spinkit": "^3.0.0"
   },
   "scripts": {
     "start": "react-scripts start",

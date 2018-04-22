@@ -1,6 +1,9 @@
 
 /**
- * Constants
+ * @file Constants
+ * @author Enrique Tamames Sobrino
+ * @module constants/
+ * @version 0.0.1
  */
 
 // Path to static JSON with stock values
@@ -8,6 +11,9 @@ export const STOCKS_JSON_PATH = 'stocks.json'
 
 // Interval between calls to API
 export const TIMEOUT = 10000
+
+// Simulated delay
+export const SIMULATED_DELAY = 2000
 
 // Status code for API
 export const STATUS_CODE = {
