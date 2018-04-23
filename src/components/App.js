@@ -114,6 +114,7 @@ class App extends Component {
           <h1 className="App-title">Welcome to Catawiki assignment</h1>
         </header>
         <div className="App-intro">
+        {stocks.length === 0 && <p className="App-nodata">No stock data is available</p>}
         <table>
           <thead>
             <tr>

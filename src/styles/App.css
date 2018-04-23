@@ -19,3 +19,8 @@
 .App-intro {
   font-size: large;
 }
+
+.App-nodata {
+  margin-top: 50px;
+  font-size: 16px;
+}
