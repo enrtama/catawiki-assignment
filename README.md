@@ -64,6 +64,9 @@ For the project to build, **these files must exist with exact filenames**:
 
 In the project directory, you can run:
 
+### `yarn install`
+Installs the project dependencies
+
 ### `yarn start`
 
 Runs the app in the development mode.<br>
