@@ -11,7 +11,7 @@ import React, { Component } from 'react'
 import NotificationSystem from 'react-notification-system'
 import Spinner from 'react-spinkit'
 import { Offline } from 'react-detect-offline';
-import { STOCKS_JSON_PATH, TIMEOUT, SIMULATED_DELAY, NOTIFICATION_LEVEL } from '../constants'
+import { STOCKS_JSON_PATH, TIMEOUT, SIMULATED_DELAY, NOTIFICATION_LEVEL, NOTIFICATION_AUTODISMISS } from '../constants'
 import { request } from '../api'
 
 import logo from '../assets/catawiki-logo.png';
@@ -58,7 +58,7 @@ class App extends Component {
   }
 
   /**
-   * async fetchData - description
+   * async fetchData - Get stocks from JSON file
    *
    * @return {type}  description
    */
@@ -85,16 +85,16 @@ class App extends Component {
   }
 
   /**
-   * _addNotification - description
+   * addNotification - Add notification
    *
-   * @param  {type} event description
-   * @return {type}       description
+   * @param  {type} response description
+   * @return {type}          description
    */
   addNotification(response) {
     this._notificationSystem.addNotification({
       message: response.message,
       level: NOTIFICATION_LEVEL.WARNING,
-      autoDismiss: 0,
+      autoDismiss: NOTIFICATION_AUTODISMISS,
       dismissible: 'none'
     })
   }

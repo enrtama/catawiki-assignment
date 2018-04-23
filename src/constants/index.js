@@ -9,11 +9,14 @@
 // Path to static JSON with stock values
 export const STOCKS_JSON_PATH = 'stocks.json'
 
-// Interval between calls to API
+// Interval between calls to API (milliseconds)
 export const TIMEOUT = 10000
 
-// Simulated delay
+// Simulated delay (milliseconds)
 export const SIMULATED_DELAY = 2000
+
+// Timeout for notification autodismiss (seconds)
+export const NOTIFICATION_AUTODISMISS = 3
 
 // Status code for API
 export const STATUS_CODE = {
@@ -26,7 +29,7 @@ export const STATUS_CODE = {
 // Map status code response messages
 export const RESPONSE_MESSAGES = {
   INTERNAL_ERROR: 'Ops, Something wrong happened',
-  NOT_FOUND: 'Resource not found',
+  NOT_FOUND: 'Resource not found. Stocks did not update',
   NOT_AUTHORIZED: 'Sorry, the user is not authorized'
 }
 
