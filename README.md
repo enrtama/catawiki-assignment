@@ -18,9 +18,9 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 * Use spinner to load data. Maybe a text telling the user that data is being loaded
 
 ##### What trade-offs did you make?
-* Api module exported: function request can be used by other components (modular code)
+* Api module exported: function "request" can be used by other components (modular code)
 * Constants: Code will be changed everywhere.
-* Take advantage of create-react-app templates to register a service worker and create an work it out with online/offline mode
+* Take advantage of create-react-app templates to register a service worker to handle online/offline mode
 * create-react-app templates gives you configuration out of the box so I did not spend time on it.
 
 ## Folder Structure
